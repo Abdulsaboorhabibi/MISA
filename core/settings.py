@@ -37,13 +37,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
-    # register created apps 
+    # register created apps
     "base",
     "project",
     "mande",
     "utilities",
-    "asset"
+    "asset",
+    "accounts",
 ]
 
 MIDDLEWARE = [
@@ -124,12 +124,11 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
-STATICFILES_DIRS = [
-    BASE_DIR / "static"
-]
-STATICFILES_ROOT = [
-    BASE_DIR / "static"
-]
+STATICFILES_DIRS = [BASE_DIR / "static"]
+STATICFILES_ROOT = [BASE_DIR / "static"]
+
+LOGIN_REDIRECT_URL = "profile/"
+LOGNIN_URL = "accounts/login/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
