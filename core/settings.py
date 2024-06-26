@@ -130,6 +130,16 @@ STATICFILES_ROOT = [BASE_DIR / "static"]
 LOGIN_REDIRECT_URL = "/accounts/"
 LOGNIN_URL = "accounts/login/"
 
+# Default session cookie age (in second)
+DEFAULT_SESSION_COOKIE_AGE = 60 * 60 * 24 * 7  # 7 day
+
+# Remember me session cookie age (in seconds)
+REMEMBER_ME_SESSION_COOKIE_AGE = 60 * 60 * 24 * 30  # 30 days (adjust as needed)
+
+# Set initial session cookie age
+SESSION_COOKIE_AGE = DEFAULT_SESSION_COOKIE_AGE
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 

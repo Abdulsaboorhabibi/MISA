@@ -12,9 +12,9 @@
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" />
   </head>
   <body class="vh-100 overflow-hidden">
-    <div class="row bg-primary h-100">
+    <div class="row bg-body h-100">
       <!-- menu slide -->
-      <div class="col-2 bg-body-tertiary d-flex flex-column justify-content-between">
+      <div class="col-2 bg-body-tertiary border-end d-flex flex-column justify-content-between">
         <!-- upper menu -->
 
         <div class="d-flex flex-column flex-shrink-0 p-3">
@@ -96,7 +96,14 @@
         </div>
       </div>
       <!-- content slide -->
-      <div class="col-10"></div>
+      <div class="col-10 pb-4">
+        <!-- content here -->
+        <div class="rounded bordered bg-body-tertiary shadow-sm m-2 mb-3 w-full h-100">
+          {% block proflieContent %}
+
+          {% endblock %}
+        </div>
+      </div>
     </div>
 
     <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}" crossorigin="anonymous"></script>
