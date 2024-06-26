@@ -127,7 +127,7 @@ STATIC_URL = "static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
 STATICFILES_ROOT = [BASE_DIR / "static"]
 
-LOGIN_REDIRECT_URL = "profile/"
+LOGIN_REDIRECT_URL = "/accounts/"
 LOGNIN_URL = "accounts/login/"
 
 # Default primary key field type

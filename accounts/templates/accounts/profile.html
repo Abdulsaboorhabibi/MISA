@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ user.username }} - Profile</title>
-  </head>
-  <body>
-    <h1>Your Profile here</h1>
-  </body>
-</html>
+{% extends 'base/index.html' %}
+{% block title %}
+  Profile
+{% endblock %}
+{% block content %}
+  {{ user.username }}
+{% endblock %}

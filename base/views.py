@@ -1,5 +1,13 @@
 from django.shortcuts import render
-from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView, TemplateView
+from django.views.generic import (
+    CreateView,
+    UpdateView,
+    DeleteView,
+    ListView,
+    DetailView,
+    TemplateView,
+)
+
 
 # Base view of the application.
 class IndexView(TemplateView):
@@ -7,7 +15,7 @@ class IndexView(TemplateView):
 
 
 class AboutView(TemplateView):
-    template_name = "base/index.html"
+    template_name = "base/about.html"
 
 
 class ContactView(TemplateView):

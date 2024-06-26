@@ -13,3 +13,7 @@ class UserLoginView(LoginView):
     user_redirected_url = True
     template_name = "accounts/login.html"
     success_url = reverse_lazy("accounts/profile/")
+
+
+class UserLogout(LogoutView):
+    next = "accounts/login/"
