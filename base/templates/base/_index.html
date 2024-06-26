@@ -51,26 +51,35 @@
               <input class="form-control" type="search" placeholder="Search" aria-label="Search" />
             </form>
             <ul class="navbar-nav me-0 mb-2 mb-lg-0">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-uppercase" href="#" data-bs-toggle="dropdown" aria-expanded="false">{{ user.username }}</a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a class="dropdown-item" href="#">New project...</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">Profile</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">Edit</a>
-                  </li>
-                  <li>
-                    <hr class="dropdown-divider" />
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">Sign out</a>
-                  </li>
-                </ul>
-              </li>
+              {% if user.is_authenticated %}
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle text-uppercase" href="#" data-bs-toggle="dropdown" aria-expanded="false">{{ user.username }}</a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item" href="#">New project...</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="/accounts/">Profile</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">Edit</a>
+                    </li>
+                    <li>
+                      <hr class="dropdown-divider" />
+                    </li>
+                    <li>
+                      <form action="/accounts/logout/" method="POST">
+                        {% csrf_token %}
+                        <input type="submit" value="Sign Out" class="dropdown-item" />
+                      </form>
+                    </li>
+                  </ul>
+                </li>
+              {% else %}
+                <li class="nav-item">
+                  <a href="/accounts/login/" class="btn btn-secondary ms-2">Login</a>
+                </li>
+              {% endif %}
             </ul>
           </div>
         </div>
