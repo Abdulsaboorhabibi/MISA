@@ -1,5 +1,6 @@
 from django.db import models
 from django.template.defaultfilters import slugify
+from django.contrib import messages
 
 
 class Location(models.Model):
@@ -22,6 +23,7 @@ class Location(models.Model):
         while Location.objects.filter(slug=self.slug).exists():
             self.slug = slugify(f"{self.province}-{uuid.uuid4().hex[:8]}")
 
+        messages.info(request, "Location Added Successfully.")
         super(Location, self).save(*args, **kwargs)
 
     class Meta:
