@@ -20,3 +20,18 @@ class UserLoginView(RedirectAuthenticatedUserMinin, LoginView):
     authentication_form = UserAuthenthicationForm
     template_name = "accounts/login.html"
     success_url = reverse_lazy("accounts/profile/")
+
+    @method_decorator(never_cache)
+    def dispatch(self, request, *args, **kwargs):
+        if request.method == "POST":
+            remember_me = request.POST.get("remember_me")
+            if remember_me:
+                # Set session expiry for "Remember me"
+                settings.SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+                settings.SESSION_COOKIE_AGE = settings.REMEMBER_ME_SESSION_COOKIE_AGE
+            else:
+                # Reset session expiry to default
+                settings.SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+                settings.SESSION_COOKIE_AGE = settings.DEFAULT_SESSION_COOKIE_AGE
+
+        return super().dispatch(request, *args, **kwargs)
