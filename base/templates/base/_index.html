@@ -90,24 +90,23 @@
       <div class="position-relative">
         <div class="position-absolute top-0 end-0 m-5 p-3">
           {% for message in messages %}
-            <div class="alert 
-            
-            {% if message.tags == 'success' %}
-                 alert-success
-              {% elif message.tags == 'info' %}
-                 alert-primary
-              {% elif message.tags == 'info' %}
-                 alert-primary
-              {% elif message.tags == 'warning' %}
-                 alert-warning
-              {% elif message.tags == 'error' %}
-                 alert-danger
-              {% endif %}
-            alert-dismissible fade show"
-              role="alert">
-              <strong>{{ message.tags|title }}</strong> {{ message }}
+            <div class="alert {{ message.tags }} alert-dismissible fade show"
+              role="alert" id="message_alert">
+              <strong>{{ message.tags|cut:"alert-"|title }}:</strong> {{ message }}
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
+            <script>
+              // Get the alert element
+              var alert = document.getElementById('message_alert');
+
+              // Initialize a timeout function
+              setTimeout(function() {
+                // Close the alert using Bootstrap alert methods
+                var bsAlert = new bootstrap.Alert(alert);
+                bsAlert.close();
+              }, 5000); // 5000 milliseconds = 5 seconds
+            </script>
+
           {% endfor %}
         </div>
       </div>
