@@ -1,2 +1,6 @@
+<<<<<<< HEAD
+=======
+venv/
+>>>>>>> 0e476bcf68103195a0cedc31b5978f7883f33bdf
 .venv/
 /static/node_modules/
