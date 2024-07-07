@@ -1,0 +1,46 @@
+<div aria-live="polite" aria-atomic="true" class="position-relative">
+  <!-- Position it -->
+  <div class="toast-container position-fixed top-5 end-0 p-3">
+    <!-- Django Messages -->
+    {% if messages %}
+      {% for message in messages %}
+        <div class="toast align-items-center {{ message.tags }} border-0" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="d-flex p-1 align-items-center 
+            {% if message.tags == 'bg-warning' %}
+              text-dark
+            {% else %}
+              text-white
+            {% endif %}
+        ">
+            <strong>
+              {% if message.tags == "bg-seconday" %}
+                  Message:
+              {% elif message.tags == "bg-success" %}
+                Success:
+              {% elif message.tags == "bg-warning" %}
+                Warning:
+              {% elif message.tags == "bg-info" %}
+                Info:
+              {% elif message.tags == "bg-danger" %}
+                Error:
+              {% endif %}
+
+            </strong>
+            <div class="toast-body">{{ message }}</div>
+            <button type="button" class="btn-close me-2 m-auto text-white" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+      var toastList = toastElList.map(function (toastEl) {
+        return new bootstrap.Toast(toastEl, { autohide: true, delay: 5000 })
+      })
+      toastList.forEach((toast) => toast.show())
+    })
+  </script>
+</div>

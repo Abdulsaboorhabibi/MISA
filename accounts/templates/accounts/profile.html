@@ -3,5 +3,19 @@
   Profile
 {% endblock %}
 {% block proflieContent %}
-  {{ user.username }} this is from profile page
+  <section>
+    <div class="row">
+      <div class="col-8">Your profile is your digital HUB.</div>
+      <div class="col-4">{{ user }}</div>
+    </div>
+
+    <div class="row row-cols-lg-2 gap-y-2">
+      <div class="col my-5">First Name: {{ user.first_name }}</div>
+      <div class="col my-5">First Name: {{ user.last_name }}</div>
+      <div class="col my-5">First Name: {{ user.email }}</div>
+      <div class="col my-5">First Name: {{ user.phone }}</div>
+      <div class="col my-5">First Name: {{ user.date_joined }}</div>
+      <div class="col my-5">First Name: {{ user.last_login }}</div>
+    </div>
+  </section>
 {% endblock %}

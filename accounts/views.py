@@ -6,6 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.conf import settings
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
+from django.contrib import messages
 
 from accounts.forms import UserAuthenthicationForm
 from accounts.account_mixins import RedirectAuthenticatedUserMinin
@@ -29,6 +30,7 @@ class UserLoginView(RedirectAuthenticatedUserMinin, LoginView):
                 # Set session expiry for "Remember me"
                 settings.SESSION_EXPIRE_AT_BROWSER_CLOSE = False
                 settings.SESSION_COOKIE_AGE = settings.REMEMBER_ME_SESSION_COOKIE_AGE
+
             else:
                 # Reset session expiry to default
                 settings.SESSION_EXPIRE_AT_BROWSER_CLOSE = True
